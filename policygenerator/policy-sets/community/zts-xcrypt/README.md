@@ -1,6 +1,6 @@
 # Zettaset Xcrypt PolicySet
 
-**Note**: This has been tested successfully to encrypt a mariadb application pvc on RHACM 2.6.1 and OCP 4.9.
+**Note**: This has been tested successfully to encrypt a mariadb application pvc.
 
 ## Prerequisites
 
@@ -10,16 +10,17 @@ Label the nodes:
 
 Apply labels to worker nodes:
 
-   % oc get nodes|grep worker
-   ip-10-0-143-90.us-east-2.compute.internal    Ready      worker   110d   v1.19.0+e49167a
-   ip-10-0-190-63.us-east-2.compute.internal    Ready      worker   110d   v1.19.0+e49167a
-   ip-10-0-207-48.us-east-2.compute.internal    Ready      worker   110d   v1.19.0+e49167a
+```
+    % oc get nodes|grep worker
+    ip-10-0-143-90.us-east-2.compute.internal    Ready      worker   110d   v1.19.0+e49167a
+    ip-10-0-190-63.us-east-2.compute.internal    Ready      worker   110d   v1.19.0+e49167a
+    ip-10-0-207-48.us-east-2.compute.internal    Ready      worker   110d   v1.19.0+e49167a
 
-   Apply labels to nodes:
-   $ oc label nodes ip-10-0-143-90.us-east-2.compute.internal zts-master=true
-   $ oc label nodes ip-10-0-190-63.us-east-2.compute.internal zts-worker=true
-   $ oc label nodes ip-10-0-207-48.us-east-2.compute.internal zts-worker=true
- 
+    Apply labels to nodes:
+    $ oc label nodes ip-10-0-143-90.us-east-2.compute.internal zts-master=true
+    $ oc label nodes ip-10-0-190-63.us-east-2.compute.internal zts-worker=true
+    $ oc label nodes ip-10-0-207-48.us-east-2.compute.internal zts-worker=true
+```
 
 ## Installation
 
@@ -30,21 +31,21 @@ The OpenShift Plus PolicySet contains two `PolicySets` that will be deployed.  T
    Please contact Zettaset for this.
 2. oc create -f policy-zts-xcrypt-version-1.yaml
    This command installs the Xcrypt policy set on the Managed Cluster and needs to be run on the Hub Cluster.
-3.  Make sure all the pods are running on the managed cluster.
+3. Make sure all the pods are running on the managed cluster.
 
-[docker@localhost managed]$ oc get pods -n zts-xcrypt
-[docker@localhost managed]$ oc get pods -n zts-xcrypt
-NAME                                   READY   STATUS    RESTARTS   AGE
-zts-csi-controller-7576b65bf7-6gs5v    4/4     Running   0          21m
-zts-csi-node-84wlr                     3/3     Running   0          21m
-zts-csi-node-bz2sk                     3/3     Running   0          21m
-zts-masterset-ca-429bz                 1/1     Running   0          21m
-zts-masterset-hm-r4gkt                 1/1     Running   0          21m
-zts-masterset-hm-v7ss8                 1/1     Running   0          21m
-zts-masterset-kmip-fsdkr               1/1     Running   0          21m
-zts-masterset-ls-7nrn5                 1/1     Running   0          21m
-zts-xcrypt-operator-68f4d949c6-mzxqs   1/1     Running   0          21m
-[docker@localhost managed]$ 
+```
+    #  [docker@localhost managed]$ oc get pods -n zts-xcrypt
+    #  NAME                                   READY   STATUS    RESTARTS   AGE
+    #  zts-csi-controller-7576b65bf7-6gs5v    4/4     Running   0          21m
+    #  zts-csi-node-84wlr                     3/3     Running   0          21m
+    #  zts-csi-node-bz2sk                     3/3     Running   0          21m
+    #  zts-masterset-ca-429bz                 1/1     Running   0          21m
+    #  zts-masterset-hm-r4gkt                 1/1     Running   0          21m
+    #  zts-masterset-hm-v7ss8                 1/1     Running   0          21m
+    #  zts-masterset-kmip-fsdkr               1/1     Running   0          21m
+    #  zts-masterset-ls-7nrn5                 1/1     Running   0          21m
+    #  zts-xcrypt-operator-68f4d949c6-mzxqs   1/1     Running   0          21m
+```
  
 4.  Follow the post installation steps for Xcrypt 
 [docker@localhost managed]$ oc exec -it  zts-masterset-ls-64f8g -n zts-xcrypt -- /usr/share/zts/bin/edit_nodes.sh   -a zts-masterset-hm-kglph
