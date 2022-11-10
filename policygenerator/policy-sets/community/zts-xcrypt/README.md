@@ -30,7 +30,10 @@ The Zettaset PolicySet contains a single `policyset-xcrypt` that will be deploye
    policy that installs the Zettaset Image Pull Secret and the Zettaset Configuration 
    file.
    Please contact Zettaset for this.
-2. oc create -f policy-zts-xcrypt-version-1.yaml.
+2. Run the command: 
+```
+   oc create -f policy-zts-xcrypt-version-1.yaml.
+```
    This command installs the Xcrypt policy set on the Managed Cluster and needs to be run on the Hub Cluster.
 3. Make sure all the pods are running on the managed cluster.
 
