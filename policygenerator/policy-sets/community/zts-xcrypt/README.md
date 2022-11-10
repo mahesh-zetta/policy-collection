@@ -33,8 +33,8 @@ The Zettaset PolicySet contains a single `policyset-xcrypt` that will be deploye
 2. Run the command: 
 ```
    oc create -f policy-zts-xcrypt-version-1.yaml.
+   This command installs the Xcrypt operator on the Managed Cluster and needs to be run on the Hub Cluster.
 ```
-   This command installs the Xcrypt policy set on the Managed Cluster and needs to be run on the Hub Cluster.
 3. Make sure all the pods are running on the managed cluster.
 
 ```
