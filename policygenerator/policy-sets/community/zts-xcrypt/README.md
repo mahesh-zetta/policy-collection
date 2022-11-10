@@ -24,7 +24,7 @@ Apply labels to worker nodes:
 
 ## Installation
 
-The OpenShift PolicySet contains a single `PolicySet` that will be deployed.  The PolicySet installs everything onto the Advanced Cluster Management hub cluster.  The Zettaset Xcrypt operator is deployed onto all OpenShift managed clusters with the label `dev`.
+The OpenShift PolicySet contains a single `policyset-xcrypt` that will be deployed on the Cluster Management hub cluster.  The Zettaset Xcrypt operator is deployed onto all OpenShift managed clusters with the label `dev`.
 
 1. To install Xcrypt using this PolicySet, you must first have:
    Installed the policy that installs the Zettaset Image Pull Secret and the Zettaset Configuration file.
